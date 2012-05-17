@@ -1,66 +1,85 @@
 var timeLine = Titanium.UI.currentWindow;
-timeLine.backgroundColor='#000';
+//timeLine.backgroundColor='#000';
+//timeLine.backgroundImage = 'images/splasColor.png'
 ////////////////////////////////////////////////////////////////////////////////////////
 
-var sedesTV = Titanium.UI.createTableView({
+var search = Titanium.UI.createSearchBar({
+	  barColor: '#385292', 
+	height : '40dp',
+	hintText : 'Busca tu escuela',
+	top : '0dp',
+	showCancel:false,
+	
+});
+/////////////////////////////////////////////////////////////////////////////
 
+
+var url = "http://dimsatec.com/services/hubbers/api/escuelas";
+var table = Ti.UI.createTableView({
 	top : '50dp',
 	left:'15dp',
 	right:'15dp',
 	down:'25dp',
 	//width:'25dp',
-	minRowHeight : '55dp',
-	maxRowHeight : '60dp',
+	minRowHeight : '60dp',
+	maxRowHeight : '70dp',
 	editable : true,
 	backgroundColor:'#fff',
+ 	search:search,
+ 	filterAttribute:'filter'
+ 
 });
-
-timeLine.add(sedesTV);
-/////////////////////////////////////////////////////////////////////////////////////////////7
-
-
-var url = "https://raw.github.com/appcelerator/Documentation-Examples/master/HTTPClient/data/json.txt";
-var table = Ti.UI.createTableView();
 var tableData = [];
-var json, fighters, fighter, i, row, nameLabel, nickLabel;
+var json;
 
 var xhr = Ti.Network.createHTTPClient({
     onload: function() {
 	// Ti.API.debug(this.responseText);
+	
+	var tableData = [];
+			json = JSON.parse(this.responseText);
 
-	json = JSON.parse(this.responseText);
-	for (i = 0; i < json.fighters.length; i++) {
-	    fighter = json.fighters[i];
-	    row = Ti.UI.createTableViewRow({
-	        height:'60dp'
-	    });
-	    nameLabel = Ti.UI.createLabel({
-	        text:fighter.name,
-	        font:{
-	            fontSize:'24dp',
-		    fontWeight:'bold'
-		},
-		height:'auto',
-		left:'10dp',
-		top:'5dp',
-		color:'#000',
-		touchEnabled:false
-	    });
-	    nickLabel = Ti.UI.createLabel({
-		text:'"' + fighter.nickname + '"',
-		font:{
-		    fontSize:'16dp'
-		},
-		height:'auto',
-		left:'15dp',
-		bottom:'5dp',
-		color:'#000',
-		touchEnabled:false
-	    });
 
-	    row.add(nameLabel);
-	    row.add(nickLabel);
-	    tableData.push(row);
+
+	var cuenta = json.length;
+			for( i = 0; i < cuenta; i++) {
+
+				var row = Titanium.UI.createTableViewRow({
+					id : json[i].id_sede,
+					hasChild : true,
+					height:'50dp',
+					backgroundColor : '#fff',
+					filter:json[i].Nombre,
+				});
+				
+				var nombreEscuela= Titanium.UI.createLabel({
+					text : json[i].Nombre,
+					font : {
+						fontSize : '18dp',
+						fontWeight : 'bold'
+					},
+					left : '40dp',
+					top : '15dp',
+					color:'#000',
+					width:'280dp',
+					
+					touchEnabled : false
+				});
+				
+				var imagenEscuela = Titanium.UI.createImageView({
+					height : '38dp',
+					width : '38dp',
+					top : '3dp',
+					left : '2dp',
+					image : '/images/escuelaSecundaria.jpg',
+					touchEnabled : false,
+					backgroundColor : '#000',
+
+				});
+
+	    row.add(nombreEscuela);
+	    row.add(imagenEscuela)
+	     tableData.push(row);
         }
 
 	table.setData(tableData);
@@ -77,7 +96,6 @@ var xhr = Ti.Network.createHTTPClient({
 xhr.open("GET", url);
 xhr.send();
 
-win.add(table);
-win.open();
+//timeLine.add(table);
 
 //////////////////////////////////////////////////////////////////////////////////////////////
