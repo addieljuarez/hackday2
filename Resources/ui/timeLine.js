@@ -1,5 +1,7 @@
 var timeLine = Titanium.UI.currentWindow;
-//timeLine.backgroundColor='#000';
+timeLine.backgroundColor='#000';
+timeLine.navBarHidden= true;
+timeLine.fullscreen= true;
 //timeLine.backgroundImage = 'images/splasColor.png'
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -45,7 +47,14 @@ var xhr = Ti.Network.createHTTPClient({
 			for( i = 0; i < cuenta; i++) {
 
 				var row = Titanium.UI.createTableViewRow({
-					id : json[i].id_sede,
+					id : json[i].clave,
+					id1 : json[i].Nombre,
+					id2 : json[i].Ubicacion,
+					id3 : json[i].zona_id_zona,
+					id4 : json[i].logo,
+					id5 : json[i].telefono,
+					id6 : json[i].director,
+					id7 : json[i].numero,
 					hasChild : true,
 					height:'50dp',
 					backgroundColor : '#fff',
@@ -80,6 +89,36 @@ var xhr = Ti.Network.createHTTPClient({
 	    row.add(nombreEscuela);
 	    row.add(imagenEscuela)
 	     tableData.push(row);
+
+	row.addEventListener('click', function(e){
+	
+	var  clv=e.rowData.id;
+	var nomb = e.rowData.id1;
+	var ubc = e.rowData.id2;
+	var zon =e.rowData.id3;
+	var lg = e.rowData.id4;
+	var tlf = e.rowData.id5;
+	var dirc = e.rowData.id6;
+	var nmr = e.rowData.id7;
+	
+	 var grid = Ti.UI.createWindow({
+		url:'/ui/grid.js',
+		ID1:clv,
+		ID2:nomb,
+		ID3:ubc,
+		ID4:zon,
+		ID5:lg,
+		ID6:tlf,
+		ID7:dirc,
+		ID8:nmr,
+		 navBarHidden:true ,
+		
+	 });
+	grid.open({modal:true});
+	//alert(clv);
+
+});
+
         }
 
 	table.setData(tableData);
@@ -96,6 +135,7 @@ var xhr = Ti.Network.createHTTPClient({
 xhr.open("GET", url);
 xhr.send();
 
-//timeLine.add(table);
+
+timeLine.add(table);
 
 //////////////////////////////////////////////////////////////////////////////////////////////
