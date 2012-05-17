@@ -7,15 +7,17 @@ timeLine.navBarHidden= true;
 var  baner = Titanium.UI.createImageView({
 	image:'/images/banner.png',
 	top:'5dp',
+	height:'70dp',
+	width:'270dp'
 });
 timeLine.add(baner);
 
 /////////////////////////////////////////////////////////////////
 var search = Titanium.UI.createSearchBar({
-	  barColor: '#385292', 
-	height : '40dp',
+	  barColor: '#000', 
+	height : '38dp',
 	hintText : 'Busca tu escuela',
-	top : '0dp',
+	top : '12dp',
 	showCancel:false,
 	
 });
@@ -24,7 +26,7 @@ var search = Titanium.UI.createSearchBar({
 
 var url = "http://dimsatec.com/services/hubbers/api/escuelas";
 var table = Ti.UI.createTableView({
-	top : '50dp',
+	top : '70dp',
 	left:'15dp',
 	right:'15dp',
 	down:'25dp',
@@ -32,7 +34,7 @@ var table = Ti.UI.createTableView({
 	minRowHeight : '60dp',
 	maxRowHeight : '70dp',
 	editable : true,
-	backgroundColor:'#fff',
+	backgroundColor:'#f3f4f6',
  	search:search,
  	filterAttribute:'filter'
  
@@ -61,22 +63,24 @@ var xhr = Ti.Network.createHTTPClient({
 					id5 : json[i].telefono,
 					id6 : json[i].director,
 					id7 : json[i].numero,
+					id8 : json[i].latitud,
+					id9 : json[i].longitud,
 					hasChild : true,
 					height:'50dp',
-					backgroundColor : '#fff',
+					backgroundColor : '#f3f4f6',
 					filter:json[i].Nombre,
 				});
 				
 				var nombreEscuela= Titanium.UI.createLabel({
 					text : json[i].Nombre,
 					font : {
-						fontSize : '18dp',
+						fontSize : '14dp',
 						fontWeight : 'bold'
 					},
-					left : '40dp',
+					left : '50dp',
 					top : '15dp',
 					color:'#000',
-					width:'280dp',
+					width:'180dp',
 					
 					touchEnabled : false
 				});
@@ -106,6 +110,8 @@ var xhr = Ti.Network.createHTTPClient({
 	var tlf = e.rowData.id5;
 	var dirc = e.rowData.id6;
 	var nmr = e.rowData.id7;
+	var lat =e.rowData.id8;
+	var lon = e.rowData.id9;
 	
 	 var grid = Ti.UI.createWindow({
 		url:'/ui/grid.js',
@@ -117,6 +123,8 @@ var xhr = Ti.Network.createHTTPClient({
 		ID6:tlf,
 		ID7:dirc,
 		ID8:nmr,
+		ID9:lat,
+		ID10:lon,
 		 navBarHidden:true ,
 		
 	 });

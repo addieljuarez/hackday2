@@ -1,11 +1,24 @@
 var multimedia = Titanium.UI.currentWindow;
-multimedia.backgroundColor = '#000';
+multimedia.backgroundImage = '/images/fondo.png';
 
-var botonVideo = Titanium.UI.createButton({
-	title: 'video',
-	width:'100dp',
-	height:'50dp',
-	top:'30%',
+
+var  baner = Titanium.UI.createImageView({
+	image:'/images/banner.png',
+	top:'5dp',
+	height:'70dp',
+	width:'270dp'
+});
+multimedia.add(baner);
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+var botonVideo = Titanium.UI.createImageView({
+	image: '/images/video.png',
+	heigth:'75dp',
+	width:'75dp',
+	top:'20%',
+	left:'40%'
 });
 multimedia.add(botonVideo);
 
@@ -22,35 +35,19 @@ botonVideo.addEventListener('click', function(e){
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-var botonAudio = Titanium.UI.createButton({
-	title: 'audio',
-	width:'100dp',
-	height:'50dp',
-	top:'10%',
-});
-multimedia.add(botonAudio);
 
-//
-// add event
-//
-botonAudio.addEventListener('click', function(e){
-	var winAudio = Ti.UI.createWindow({
-
-		url:'ui/audio.js',
-	});
-	winAudio.open({modal:true});
-});
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
 //
 // create button for  picture
 //
-var botonFoto = Titanium.UI.createButton({
-	title: 'foto',
-	width:'100dp',
-	height:'50dp',
-	top:'50%',
+var botonFoto = Titanium.UI.createImageView({
+	image: '/images/foto.png',
+	heigth:'75dp',
+	width:'75dp',
+	top:'48%',
+	left:'40%'
 });
 multimedia.add(botonFoto);
 //
@@ -58,7 +55,8 @@ multimedia.add(botonFoto);
 //
 botonFoto.addEventListener('click',function(e){
 	var winFoto = Ti.UI.createWindow({
-		url:'ui/foto.js'
+		url:'ui/foto.js',
+		navBarHidden:true,
 	});
 	winFoto.open({modal:true});
 });
@@ -68,11 +66,12 @@ botonFoto.addEventListener('click',function(e){
 
 /////////////////////////////////////////////////////////////////////////////
 
-var botonDoc = Titanium.UI.createButton({
-	title: 'documentos',
-	width:'100dp',
-	height:'50dp',
-	top:'80%',
+var botonDoc = Titanium.UI.createImageView({
+	image: '/images/documentos.png',
+	heigth:'75dp',
+	width:'75dp',
+	top:'75%',
+	left:'40%',
 });
 multimedia.add(botonDoc);
 //

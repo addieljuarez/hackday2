@@ -6,12 +6,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.006273 seconds on emulator to get ready
+[DEBUG] waited 0.008048 seconds on emulator to get ready
 [DEBUG] com.FAM.hackday2 installed? True
 [INFO] Fastdev server running, deploying in Fastdev mode
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /home/addiel/Titanium Studio Workspace/hackday2/Resources/ui/grid.js => /home/addiel/Titanium Studio Workspace/hackday2/build/android/bin/assets/Resources/ui/grid.js
 [INFO] Tiapp.xml unchanged, skipping class generation
 [DEBUG] Processing Android resource drawables
 [DEBUG] found drawable-notlong-land-hdpi splash screen at /home/addiel/Titanium Studio Workspace/hackday2/Resources/android/images/res-notlong-land-hdpi/default.png
