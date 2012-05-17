@@ -10,7 +10,17 @@ var  baner = Titanium.UI.createImageView({
 winEmail.add(baner);
 
 
+var webView = Ti.UI.createWebView({
+	url:'http://mail.google.com',
+	top : '70dp',
+	left:'15dp',
+	right:'15dp',
+	down:'25dp',
+	//width:'25dp',
+	backgroundColor:'#f3f4f6',
+ });
+
     
     
- 
+ winEmail.add(webView);
    

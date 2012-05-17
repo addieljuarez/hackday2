@@ -87,8 +87,13 @@ var infoGeneral = Titanium.UI.createImageView({
 
 grid.add(infoGeneral);
 infoGeneral.addEventListener('click', function(e){
-	alert(grid.ID1);
-	
+	//alert(grid.ID1);
+	var infgen = Titanium.UI.createWindow({
+		title:'general',
+		url:'ui/general.js',
+		navBarHidden:true,
+	});
+	infgen.open({modal:true})
 });
 
 var infoRelevante = Titanium.UI.createImageView({
@@ -101,7 +106,13 @@ var infoRelevante = Titanium.UI.createImageView({
 
 grid.add(infoRelevante);
 infoRelevante.addEventListener('click', function(e){
-	alert(grid.ID1);
+	//alert(grid.ID1);
+	var infoRel = Ti.UI.createWindow({
+		title:'Relevante',
+		url:'ui/Relevante.js',
+		navBarHidden:true,
+	});
+	infoRel.open({modal:true});
 });
 
 
@@ -118,14 +129,14 @@ var correo = Titanium.UI.createImageView({
 grid.add(correo);
 correo.addEventListener('click', function(e){
 	//alert(grid.ID1);
-	// var winEmail = Titanium.UI.createWindow({
-		// title:'email',
-		// url:'ui/email.js',
-		// navBarHidden:true,
-	// });
-	// winEmail.open({modal:true});
+	 var winEmail = Titanium.UI.createWindow({
+		title:'email',
+		url:'ui/email.js',
+		navBarHidden:true,
+	});
+	winEmail.open({modal:true});
 	
-	var newDir = Titanium.Filesystem.get
+	
 	
  });
 
@@ -146,9 +157,11 @@ var multimedia = Titanium.UI.createImageView({
 	
 });
 
+
 grid.add(multimedia);
 multimedia.addEventListener('click', function(e){
 	//alert(grid.ID6);
+	//multimedia.opacity= 0.0;
 	var winMultimedia = Ti.UI.createWindow({
 		title:'multimedia',
 		url:'ui/multimedia.js',	
