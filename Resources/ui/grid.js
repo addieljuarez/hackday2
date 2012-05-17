@@ -1,5 +1,5 @@
 var grid  = Titanium.UI.currentWindow;
-grid.backgroundColor = '#000';
+grid.backgroundImage = '/images/fondo.png';
 grid.layout = 'vertical';
 
 
@@ -20,7 +20,21 @@ var pagina = Titanium.UI.createButton({
 grid.add(pagina);
 
 pagina.addEventListener('click', function(e){
+	//alert(grid.ID1);
+	var winPagina = Titanium.UI.createWindow({
+		title:'pagina web',
+		backgroundColor:'#000',
+		navBarHidden:true,
+	});
+	winPagina.open({modal:true});
 	alert(grid.ID1);
+	
+	var webView = Ti.UI.createWebView({
+		url:'http://upiicsalibre.org',
+		
+	});
+	winPagina.add(webView);
+	
 	
 });
 
@@ -60,6 +74,8 @@ correo.addEventListener('click', function(e){
 	
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 var multimedia = Titanium.UI.createButton({
 	title :'multimedia',
 	heigth:'75dp',
@@ -68,18 +84,30 @@ var multimedia = Titanium.UI.createButton({
 
 grid.add(multimedia);
 multimedia.addEventListener('click', function(e){
-	alert(grid.ID6);
-	
+	//alert(grid.ID6);
+	var winMultimedia = Ti.UI.createWindow({
+		title:'multimedia',
+		url:'ui/multimedia',	
+	});
+	winMultimedia.open({modal:true});
 });
 
+
+////////////////////////////////////////////////////////////////////////////////////////////
 var mapa = Titanium.UI.createButton({
 	title :'mapa',
 	heigth:'75dp',
 	width:'120dp',
 });
 mapa.addEventListener('click', function(e){
-	alert(grid.ID7);
-	
+	//alert(grid.ID7);
+	var winMapa = Titanium.UI.createWindow({
+		title:'mapa',
+		url:'ui/mapa.js'
+	});
+	winMapa.open({modal:true});
 });
 
 grid.add(mapa);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////77

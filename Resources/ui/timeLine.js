@@ -1,10 +1,16 @@
 var timeLine = Titanium.UI.currentWindow;
-timeLine.backgroundColor='#000';
+timeLine.backgroundImage='/images/fondo.png';
 timeLine.navBarHidden= true;
-timeLine.fullscreen= true;
+//timeLine.fullscreen= true;
 //timeLine.backgroundImage = 'images/splasColor.png'
 ////////////////////////////////////////////////////////////////////////////////////////
+var  baner = Titanium.UI.createImageView({
+	image:'/images/banner.png',
+	top:'5dp',
+});
+timeLine.add(baner);
 
+/////////////////////////////////////////////////////////////////
 var search = Titanium.UI.createSearchBar({
 	  barColor: '#385292', 
 	height : '40dp',
@@ -127,7 +133,7 @@ var xhr = Ti.Network.createHTTPClient({
 	Ti.API.debug("STATUS: " + this.status);
 	Ti.API.debug("TEXT:   " + this.responseText);
 	Ti.API.debug("ERROR:  " + e.error);
-	alert('There was an error retrieving the remote data. Try again.');
+	alert('sin internet.');
     },
     timeout:5000
 });

@@ -14,7 +14,7 @@ Titanium.UI.setBackgroundColor('#000');
 var Main = Titanium.UI.createWindow({
 	url:'ui/timeLine.js',
 	title:'TL',
-	
+	//navBarHidden:true,
 	//backgroundImage:'/images/splashColor.png',
 	
 });
